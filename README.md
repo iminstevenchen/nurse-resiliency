@@ -19,6 +19,10 @@ Provider burnout is a major driver of attrition and patient-safety risk in healt
 
 **3. Burnout prediction** — Multiple ML algorithms (including **XGBoost regression**, with scikit-learn pipelines) predicted current-burnout status from survey features and embedding-derived signals.
 
+## My Contributions
+
+- **Cross-survey schema harmonization** — mapped and reconciled column structures between the ASRA and ASPAN survey instruments (type comparison, missing-column handling, checklist-item consolidation, target-variable recoding rules) to enable a joined analysis dataset.
+
 ## Tech Stack
 
 `Python` · `sentence-transformers` · `scikit-learn` · `XGBoost` · `pandas` · `NumPy`
