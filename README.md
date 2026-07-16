@@ -1,20 +1,23 @@
 # Nurse Resiliency — Burnout Risk Modeling
 
-Analysis of burnout and resiliency in **6,000+ medical providers**, using national survey data and Vanderbilt University Medical Center (VUMC) datasets. Completed as a project at the Vanderbilt Data Science Institute.
+Analysis of burnout and resiliency in **6,000+ medical providers** — nurses and anesthesiologists from national survey datasets (ASRA, ASPAN) and advanced practice nurses from a VUMC-wide dataset. Completed as a project with the Vanderbilt Data Science Institute (Fall 2021).
 
-> ⚠️ **No data or identifiable results are included in this repository.** The underlying datasets contain sensitive information about medical providers and cannot be shared. This repo documents the problem, approach, and methods.
+> ⚠️ **No data is included in this repository.** The de-identified survey data is restricted to project members. This repo documents the problem, approach, and methods only.
 
 ## Problem
 
-Provider burnout is a major driver of attrition and patient-safety risk in healthcare. The goal of this project was to (1) understand patterns of burnout and resiliency across provider populations and (2) build models that assess burnout risk so support resources can be targeted earlier.
+Provider burnout is a major driver of attrition and patient-safety risk in healthcare. The project team developed the **Self-Identified Burnout survey (SIBO)** — categorizing respondents as *currently*, *formerly*, or *never* burned out — and the **Social Support and Personal Coping survey (SSPC)** to identify practices that contribute to resiliency. Two analytical questions drove the data science work:
+
+1. Do free-text "hobby" responses (what providers do to recharge) fit the team's existing hobby categories, or do new categories emerge?
+2. Can burnout status be predicted from survey features?
 
 ## Approach
 
-**1. Text representation** — Free-text survey responses were embedded with **sentence-transformers**, turning provider narratives into vectors that capture semantic similarity.
+**1. Data preparation** — ASRA and ASPAN survey data read in, cleaned, and joined; Likert-scale conversions applied to enable downstream modeling.
 
-**2. Segmentation** — **Clustering** on the embedding space identified groups of providers with similar burnout/resiliency profiles.
+**2. NLP on free-text responses** — Free-text hobby responses embedded with **sentence-transformers**; **clustering** on the embedding space grouped responses into 20 clusters, validated against the checklist-based hobby categories.
 
-**3. Risk modeling** — **XGBoost regression** (with scikit-learn pipelines for preprocessing, feature engineering, and validation) predicted burnout-risk scores from survey features and embedding-derived signals.
+**3. Burnout prediction** — Multiple ML algorithms (including **XGBoost regression**, with scikit-learn pipelines) predicted current-burnout status from survey features and embedding-derived signals.
 
 ## Tech Stack
 
@@ -24,3 +27,5 @@ Provider burnout is a major driver of attrition and patient-safety risk in healt
 
 **I-Min (Steven) Chen** — Vanderbilt MSDS '27
 [GitHub profile](https://github.com/iminstevenchen) · [LinkedIn](https://www.linkedin.com/in/i-min-chen/)
+
+*Team project with the Vanderbilt Data Science Institute; original repository is private due to data restrictions.*
